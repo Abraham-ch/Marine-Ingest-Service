@@ -58,8 +58,10 @@ async fn main() {
   println!("Sending message: {}", msg);
   write.send(msg).await.expect("Failed to send message");
   
-  if let Some(message) = read.next().await {
-    let message = message.expect("Failed to read message");
-    println!("Received message: {}", message);
-  }  
+  while let Some(message) = read.next().await {
+    match message {
+        Ok(msg) => println!("Received message: {}", msg),
+        Err(e) => eprintln!("Error receiving message: {}", e),
+    }
+  }
 }
