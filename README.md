@@ -14,7 +14,7 @@ Currently focused on:
 ```txt
 apps/
 ├── ingest-service/
-└── backend/
+└── api/
 ```
 
 For running the ingest-service just use:
